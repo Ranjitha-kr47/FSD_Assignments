@@ -1,0 +1,44 @@
+<h3>Create Employee</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form #addEmployee="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">First Name</label>
+      <input type="text" class="form-control" #firstName="ngModel" id="firstName" required [(ngModel)]="employee.firstName" name="firstName"
+      [class.is-invalid]="firstName.invalid && firstName.touched"  class="form-control" required />
+    <small class="text-danger" [class.d-none]="firstName.untouched || firstName.valid">This is require field</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Last Name</label>
+      <input type="text" class="form-control" #lastName="ngModel" id="lastName" required [(ngModel)]="employee.lastName" name="lastName"
+      [class.is-invalid]="lastName.invalid && lastName.touched"  class="form-control" required />
+    <small class="text-danger" [class.d-none]="lastName.untouched || lastName.valid">This is require field</small>
+    </div>
+
+    <div class="form-group">
+        <label for="">Gender</label> <br />
+        <div class="form-check">
+          <input type="radio" class="form-check-input" name="gender" [(ngModel)]="employee.gender" value="male" />
+          <label for="" class="form-check-label">Male</label>
+        </div>
+        
+        <div class="form-check">
+          <input type="radio" class="form-check-input" name="gender" [(ngModel)]="employee.gender" value="female" />
+          <label for="" class="form-check-label">Female</label>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <label for="name">Email</label>
+      <input type="text" class="form-control" #email="ngModel" id="email" required [(ngModel)]="employee.email" name="email"
+      [class.is-invalid]="email.invalid && email.touched"  class="form-control" required />
+    <small class="text-danger" [class.d-none]="email.untouched || email.valid">This is require field</small>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!addEmployee.valid">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+</div>
